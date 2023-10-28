@@ -1,6 +1,17 @@
 <?php
-session_start(); // Inicia a sessão
 include "config.php";
+// Inicie a sessão (se ainda não estiver iniciada)
+session_start();
+
+// Verifique se o usuário está logado
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Se não estiver logado, redirecione para a página de login
+    header('Location: login.php');
+    exit; // Certifique-se de sair após o redirecionamento
+}
+
+// Se o usuário estiver logado, exiba o conteúdo da página index.php
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
